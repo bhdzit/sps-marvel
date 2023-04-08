@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  redis:
+    image: redis:6.2-alpine
+    container_name: redis_db
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --loglevel --requirepass new_password
+    
+  node:
+   image:  node:19-alpine3.16
+   container_name: node_serve
+   restart: always
+   build: .
+   ports:
+      - '3000:3000'
+
+  
