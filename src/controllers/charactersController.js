@@ -1,15 +1,16 @@
+const { getAllCharactersOnApiServices } = require('../services/charactersServices');
 
 require('dotenv').config();
 
 const getAllCharactersOnApi = async (req, res = response) => {
     try {
-        res.send({ msg: "Marvel Api" });
+        const response = await getAllCharactersOnApiServices();
+        res.send(response);
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        res.send({ error: "Parece que hubo un error al obtener los datos!" });
     }
 }
-
-
 
 module.exports = {
     getAllCharactersOnApi
