@@ -7,18 +7,18 @@ const getAllCharacters = async (req, res = response) => {
         res.send(listOfCharacter);
     } catch (error) {
         console.log(error);
-        res.send({ error: 'IT SEEMS THERE WAS AN ERROR GETTING THE DATA!' });
+        res.status(500).json({ error: 'IT SEEMS THERE WAS AN ERROR GETTING THE DATA!' });
     }
 }
 
 const findCharacter = async (req, res = response) => {
     try {
         const character = await characterRepository.fetch(req.params.id);
-        if (character.name == null) res.send({ error: "THIS IS NOT THE CHARACTER YOU'RE LOOKING FOR!" });
+        if (character.name == null) res.status(409).json({ error: "THIS IS NOT THE CHARACTER YOU'RE LOOKING FOR!" });
         res.send(character);
     } catch (error) {
         console.log(error);
-        res.send({ error: 'IT SEEMS THERE WAS AN ERROR GETTING THE DATA!' });
+        res.status(500).json({ error: 'IT SEEMS THERE WAS AN ERROR GETTING THE DATA!' });
     }
 }
 
@@ -30,14 +30,14 @@ const createCharacter = async (req, res = response) => {
 
     } catch (error) {
         console.log(error);
-        res.send({ error: 'IT SEEMS THERE WAS AN ERROR GETTING THE DATA!' });
+        res.status(500).json({ error: 'IT SEEMS THERE WAS AN ERROR GETTING THE DATA!' });
     }
 }
 
 const updateCharacter = async (req, res = response) => {
     try {
         const character = await characterRepository.fetch(req.body.entityId);
-        if (character.name == null) res.send({ error: "THIS IS NOT THE CHARACTER YOU'RE LOOKING FOR!" });
+        if (character.name == null) res.status(409).json({ error: "THIS IS NOT THE CHARACTER YOU'RE LOOKING FOR!" });
         character.entityId = req.body.entityId;
         character.id = req.body.id;
         character.name = req.body.name;
@@ -48,7 +48,7 @@ const updateCharacter = async (req, res = response) => {
         res.send(character);
     } catch (error) {
         console.log(error);
-        res.send({ error: 'IT SEEMS THERE WAS AN ERROR GETTING THE DATA!' });
+        res.status(500).json({ error: 'IT SEEMS THERE WAS AN ERROR GETTING THE DATA!' });
     }
 }
 
@@ -58,7 +58,7 @@ const deleteCharacter = async (req, res = response) => {
         res.send({ msj: 'CHARACTER HAS REMOVED SUCCESSFULLY!' });
     } catch (error) {
         console.log(error);
-        res.send({ error: 'IT SEEMS THERE WAS AN ERROR GETTING THE DATA!' });
+        res.status(500).json({ error: 'IT SEEMS THERE WAS AN ERROR GETTING THE DATA!' });
     }
 }
 

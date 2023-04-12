@@ -1,6 +1,9 @@
 import Router from 'express';
+import { body }  from 'express-validator';
+
 const router = Router();
 import { getAllCharacters, findCharacter, updateCharacter, deleteCharacter, createCharacter } from '../controllers/charactersController.js';
+import { validarCampos } from '../utils/validar-campos.js';
 
 /**
  * @swagger
@@ -130,7 +133,12 @@ router.get('/findCharacter/:id', findCharacter);
  *                   example: FAILED
 */
 
-router.patch('/updateCharacter', updateCharacter);
+router.patch('/updateCharacter',[
+    body('entityId', 'El nombre es obligatorio').isString().notEmpty(),
+    body('name', 'El rx es obligatorio').isString().notEmpty(),
+    body('description', 'el precio es obligatorio').isString().notEmpty(),
+    validarCampos
+], updateCharacter);
 
 
 /**
@@ -230,6 +238,11 @@ router.delete('/deleteCharacter/:id', deleteCharacter);
  *                   example: FAILED
 */
 
-router.post("/createCharacter", createCharacter);
+router.post("/createCharacter",[
+
+    body('name', 'El rx es obligatorio').isString().notEmpty(),
+    body('description', 'el precio es obligatorio').isString().notEmpty(),
+    validarCampos
+], createCharacter);
 
 export const characterRouteList = router;
