@@ -63,3 +63,8 @@ app.listen(port, async () => {
 
 });
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+
+//The 404 Route (ALWAYS Keep this as the last route)
+app.get('*', function(req, res){
+  res.status(404).send({ error: "THIS IS NOT THE PAGE YOU'RE LOOKING FOR!" });
+});
