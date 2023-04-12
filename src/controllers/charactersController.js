@@ -1,6 +1,4 @@
-const { getAllCharactersOnApiServices } = require('../services/charactersServices');
 
-require('dotenv').config();
 
 const getAllCharactersOnApi = async (req, res = response) => {
     try {
@@ -12,6 +10,6 @@ const getAllCharactersOnApi = async (req, res = response) => {
     }
 }
 
-module.exports = {
+export {
     getAllCharactersOnApi
 }

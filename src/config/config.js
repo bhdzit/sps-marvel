@@ -1,5 +1,6 @@
-require('dotenv').config();
-const crypto  = require('crypto');
+
+import 'dotenv/config';
+import crypto  from 'crypto';
 const ts = parseInt(Date.now() / 1000, 10);
 
 const params = {
@@ -15,7 +16,7 @@ function createHash() {
 
   return hash;
 };
-module.exports = {
-  params
-}
+
+export const config=params; 
+
 

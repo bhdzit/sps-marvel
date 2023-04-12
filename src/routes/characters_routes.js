@@ -1,7 +1,7 @@
-const { Router } = require('express');
+import Router from 'express';
 const router = Router();
-const { getAllCharactersOnApi } = require('../controllers/charactersController');
+import { getAllCharactersOnApi } from '../controllers/charactersController.js';
 
 router.get('/getAllCharactersOnApi', getAllCharactersOnApi);
 
-module.exports = router;
+export const characterRouteList=router ;
