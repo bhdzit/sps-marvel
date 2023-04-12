@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const router = Router();
-const { getAllCharactersOnApi } = require('../controllers/CharactersController');
+const { getAllCharactersOnApi } = require('../controllers/charactersController');
 
 router.get('/getAllCharactersOnApi', getAllCharactersOnApi);
 
