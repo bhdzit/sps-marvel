@@ -22,6 +22,18 @@ const findCharacter = async (req, res = response) => {
     }
 }
 
+const createCharacter = async (req, res = response) => {
+    try {
+        req.body.modified = new Date().toISOString();
+        const savedCharacter = await characterRepository.createAndSave(req.body);
+        res.send(savedCharacter);
+
+    } catch (error) {
+        console.log(error);
+        res.send({ error: 'IT SEEMS THERE WAS AN ERROR GETTING THE DATA!' });
+    }
+}
+
 const updateCharacter = async (req, res = response) => {
     try {
         const character = await characterRepository.fetch(req.body.entityId);
@@ -56,5 +68,6 @@ export {
     getAllCharacters,
     findCharacter,
     updateCharacter,
-    deleteCharacter
+    deleteCharacter,
+    createCharacter
 }
