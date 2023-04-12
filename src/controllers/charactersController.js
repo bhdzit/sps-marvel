@@ -7,10 +7,24 @@ const getAllCharacters = async (req, res = response) => {
         res.send(listOfCharacter);
     } catch (error) {
         console.log(error);
-        res.send({ error: "Parece que hubo un error al obtener los datos!" });
+        res.send({ error: 'IT SEEMS THERE WAS AN ERROR GETTING THE DATA!' });
     }
 }
 
+const findCharacter = async (req, res = response) => {
+    try {
+        const character = await characterRepository.fetch(req.params.id);
+        if (character.name == null) res.send({ error: "THIS IS NOT THE CHARACTER YOU'RE LOOKING FOR!" });
+        res.send(character);
+    } catch (error) {
+        console.log(error);
+        res.send({ error: 'IT SEEMS THERE WAS AN ERROR GETTING THE DATA!' });
+    }
+}
+
+
+
 export {
-    getAllCharacters
+    getAllCharacters,
+    findCharacter
 }

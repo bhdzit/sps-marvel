@@ -1,7 +1,8 @@
 import Router from 'express';
 const router = Router();
-import { getAllCharactersOnApi } from '../controllers/charactersController.js';
+import { getAllCharacters, findCharacter } from '../controllers/charactersController.js';
 
-router.get('/getAllCharactersOnApi', getAllCharactersOnApi);
+router.get('/getAllCharacters', getAllCharacters);
+router.get('/findCharacter/:id', findCharacter);
 
-export const characterRouteList=router ;
+export const characterRouteList = router;
