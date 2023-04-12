@@ -8,7 +8,7 @@ import {characterRouteList} from './routes/characters_routes.js';
 
 const app = express()
 const port = 3000
-
+app.use(express.json());
 app.use("/api/characters", characterRouteList);
 
 app.listen(port, async () => {
