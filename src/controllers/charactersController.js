@@ -40,11 +40,21 @@ const updateCharacter = async (req, res = response) => {
     }
 }
 
+const deleteCharacter = async (req, res = response) => {
+    try {
+        await characterRepository.remove(req.params.id)
+        res.send({ msj: 'CHARACTER HAS REMOVED SUCCESSFULLY!' });
+    } catch (error) {
+        console.log(error);
+        res.send({ error: 'IT SEEMS THERE WAS AN ERROR GETTING THE DATA!' });
+    }
+}
 
 
 
 export {
     getAllCharacters,
     findCharacter,
-    updateCharacter
+    updateCharacter,
+    deleteCharacter
 }
