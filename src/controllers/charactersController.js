@@ -1,9 +1,10 @@
+import { characterRepository } from "../models/character.js";
 
 
-const getAllCharactersOnApi = async (req, res = response) => {
+const getAllCharacters = async (req, res = response) => {
     try {
-        const response = await getAllCharactersOnApiServices();
-        res.send(response);
+        const listOfCharacter = await characterRepository.search().return.all();
+        res.send(listOfCharacter);
     } catch (error) {
         console.log(error);
         res.send({ error: "Parece que hubo un error al obtener los datos!" });
@@ -11,5 +12,5 @@ const getAllCharactersOnApi = async (req, res = response) => {
 }
 
 export {
-    getAllCharactersOnApi
+    getAllCharacters
 }
