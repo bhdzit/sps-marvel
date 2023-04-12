@@ -13,6 +13,8 @@
     "dotenv": "^16.0.3",
     "express": "^4.16.1",
     "redis": "^4.6.5",
-    "redis-om": "^0.3.6"
+    "redis-om": "^0.3.6",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.2"
   }
 }
