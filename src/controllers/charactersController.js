@@ -39,7 +39,7 @@ const updateCharacter = async (req, res = response) => {
         const character = await characterRepository.fetch(req.body.entityId);
         if (character.name == null) res.status(409).json({ error: "THIS IS NOT THE CHARACTER YOU'RE LOOKING FOR!" });
         character.entityId = req.body.entityId;
-        character.id = req.body.id;
+        character.id = req.body.id??null;
         character.name = req.body.name;
         character.description = req.body.description;
         character.modified = new Date().toISOString();
