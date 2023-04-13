@@ -27,7 +27,7 @@ docker-compose build
 Create and start containers
 
 ~~~bash  
-docker-compose build
+docker-compose up
 ~~~
 You can acces the app on 
 
@@ -40,6 +40,7 @@ localhost:8090/api-docs/
 
 To run this project, you will need to add the following environment variables to your .env file,you can get these variables in <a href="https://developer.marvel.com/" target="_blank">Developer marvel</a>, for this purpose
 you can find my Key on de email i send.
+
 `PUBLIC_KEY`  
 
 `PRIVATE_KEY` 
